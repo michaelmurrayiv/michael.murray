@@ -11,7 +11,6 @@ interface TypewriterEffectProps {
 const TypewriterEffect: React.FC<TypewriterEffectProps> = ({
   text,
   speed = 150,
-  className = "",
 }) => {
   const [displayedText, setDisplayedText] = useState<string>("");
   const [index, setIndex] = useState<number>(0);
@@ -47,7 +46,7 @@ const TypewriterEffect: React.FC<TypewriterEffectProps> = ({
 
   return (
     <h1
-      className={`text-5xl font-bold cursor-pointer transition-colors duration-300 ${colors[currentColorIndex]}`}
+      className={`text-5xl font-bold cursor-default transition-colors duration-300 ${colors[currentColorIndex]}`}
       onMouseEnter={handleHover}
     >
       {displayedText}

@@ -1,19 +1,32 @@
 import React from "react";
 import TypewriterEffect from "@/components/TypewriterEffect";
+import Badge from "@/components/Badge";
 
 export default function AboutMe() {
   return (
     <section>
-      <h6 className="text-2xl">michael murray</h6>
-
-      <TypewriterEffect text="Hi, I'm Michael" speed={100} />
-      <p>
-        I am a software engineer from Seattle. I'm passionate about all things
-        computer science, from software engineering to deep learning to
-        cybersecurity. I enjoy learning new technologies and working on fun
-        projects.
-      </p>
-
+      <div className="flex">
+        <div className="w-1/2">
+          <h6 className="text-2xl">michael murray</h6>
+          <br></br>
+          <TypewriterEffect text="Hi, I'm Michael" speed={100} />
+          <p>
+            <br></br>I am a software engineer from Seattle.
+            <br></br>
+            I'm passionate about all things computer science, from software
+            engineering to deep learning to cybersecurity.
+            <br></br>I enjoy learning new technologies and working on fun
+            projects.
+          </p>
+        </div>
+        <div className="flex items-center justify-center w-1/2">
+          <img
+            src="/portrait.png"
+            alt="Michael Murray"
+            className="h-60 w-60 rounded-full object-cover object-top"
+          />
+        </div>
+      </div>
       <div className="mt-6">
         <div className="flex gap-4">
           {/* GitHub Logo */}
@@ -43,6 +56,79 @@ export default function AboutMe() {
           </a>
         </div>
       </div>
+
+      <br></br>
+
+      <h2 className="text-2xl font-semibold mb-2">Projects</h2>
+      <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <li className="panel">
+          <h3 className="font-semibold">
+            Interactive Chat Bot (Deep Learning)
+          </h3>
+          <span className="text-sm text-gray-500">Nov 2024 – Dec 2024</span>
+          <p>
+            Leveraged pre-trained transformer models to code a chat bot which
+            helps with common job search related tasks. Created an interface
+            capable of job description analysis, cover letter generation, and
+            sentence auto-completion.
+          </p>
+          <div className="flex flex-wrap gap-4">
+            <Badge name="PyTorch" />
+            <Badge name="Python" />
+            <Badge name="Hugging Face" />
+          </div>
+        </li>
+
+        <li className="panel">
+          <h3 className="font-semibold">Web Application - GAEIA</h3>
+          <span className="text-sm text-gray-500">Feb 2024 – Apr 2024</span>
+          <p>
+            Developed a web application using the MERN tech stack to host
+            communications and ethical dilemma work. Created the Events page,
+            including a calendar view, RSVPing, and event exportation.
+          </p>
+          <div className="flex flex-wrap gap-4">
+            <Badge name="React" />
+            <Badge name="Express" />
+            <Badge name="MongoDB" />
+          </div>
+        </li>
+
+        <li className="panel">
+          <h3 className="font-semibold">
+            Mini Language Compiler (Compiler Construction)
+          </h3>
+          <span className="text-sm text-gray-500">Mar 2024 – Jun 2024</span>
+          <p>
+            Created a compiler for programs written in the “Mini” language, a
+            subset of the C programming language. Implemented AST translation
+            into LLVM IR and three different code optimizations.
+          </p>
+          <div className="flex flex-wrap gap-4">
+            <Badge name="Java" />
+          </div>
+        </li>
+
+        <li className="panel">
+          <h3 className="font-semibold">
+            Open Recipes - Mobile App (Intro to Software Engineering)
+          </h3>
+          <span className="text-sm text-gray-500">Nov 2023 – Dec 2023</span>
+          <p>
+            Developed a mobile app for personalized recipes while adhering to
+            Agile programming practices. Implemented a “create new recipe” form
+            which accepted recipe details and stored them in a MongoDB database.
+          </p>
+          <div className="flex flex-wrap gap-4">
+            <Badge name="React Native" />
+            <Badge name="Express" />
+            <Badge name="MongoDB" />
+          </div>
+        </li>
+      </ul>
+
+      <br></br>
+
       <h2 className="text-2xl font-semibold mb-2">Want to reach out?</h2>
       <div className="flex items-center space-x-3">
         <img
