@@ -14,6 +14,7 @@ const Projects = () => {
             date={project.date}
             description={project.description}
             badges={project.badges}
+            id = {project.id}
           />
         ))}
       </ul>
