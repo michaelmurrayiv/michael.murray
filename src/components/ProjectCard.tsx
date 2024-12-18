@@ -26,7 +26,7 @@ const ProjectCard = ({
         ))}
       </div>
       <Link
-        href={`/projects/${id}`}
+        href={`/${id}`}
         className="text-blue-500 hover:underline mt-2 inline-block"
       >
         View More

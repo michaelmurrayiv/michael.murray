@@ -18,14 +18,6 @@ export default function RootLayout({
                   Home
                 </Link>
               </li>
-              <li>
-                <Link
-                  href="/projects/chatbot"
-                  className="text-white hover:text-gray-400"
-                >
-                  Chatbot
-                </Link>
-              </li>
             </ul>
           </nav>
         </header>
