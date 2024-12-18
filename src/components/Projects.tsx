@@ -13,7 +13,7 @@ const Projects = () => {
             title={project.title}
             date={project.date}
             description={project.description}
-            badges={project.badges}
+            tags={project.tags}
             id = {project.id}
           />
         ))}

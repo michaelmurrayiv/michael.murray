@@ -13,11 +13,11 @@ const colorMap: Record<string, string> = {
   "Hugging Face": "bg-purple-600",
 };
 
-interface BadgeProps {
+interface TagProps {
   name: string;
 }
 
-const Badge: React.FC<BadgeProps> = ({ name }) => {
+const Tag: React.FC<TagProps> = ({ name }) => {
   const bgColor = colorMap[name] || "bg-gray-500"; // default color
 
   return (
@@ -29,4 +29,4 @@ const Badge: React.FC<BadgeProps> = ({ name }) => {
   );
 };
 
-export default Badge;
+export default Tag;

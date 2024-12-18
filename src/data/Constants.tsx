@@ -1,34 +1,47 @@
 export const projects = [
   {
-    title: "Interactive Chat Bot (Deep Learning)",
-    date: "Nov 2024 – Dec 2024",
+    title: "NBA Game Prediction (Senior Project)",
+    date: "Sep 2024 - Present",
     description:
-      "Leveraged pre-trained transformer models to code a chat bot which helps with common job search related tasks. Created an interface capable of job description analysis, cover letter generation, and sentence auto-completion.",
-    badges: ["PyTorch", "Python"],
-    id: "chatbot",
+      "Developing machine learning models to predict NBA game outcomes.",
+    tags: ["PyTorch", "Python"],
+    id: "nba-prediction",
   },
   {
-    title: "Web Application - GAEIA",
-    date: "Feb 2024 – Apr 2024",
+    title: "Cat vs. Dog vs. Fox",
+    date: "Nov 2024 - Dec 2024",
     description:
-      "Developed a web application using the MERN tech stack to host communications and ethical dilemma work. Created the Events page, including a calendar view, RSVPing, and event exportation.",
-    badges: ["React", "Express", "MongoDB"],
-    id: "gaeia",
+      "Implemented a transfer learning model to classify images of cats, dogs, and foxes.",
+    tags: ["PyTorch", "Python"],
+    id: "transfer-learning",
   },
   {
-    title: "Mini Language Compiler (Compiler Construction)",
-    date: "Mar 2024 – Jun 2024",
+    title: "Interactive Chat Bot",
+    date: "Nov 2024 - Dec 2024",
     description:
-      "Created a compiler for programs written in the “Mini” language, a subset of the C programming language. Implemented AST translation into LLVM IR and three different code optimizations.",
-    badges: ["Java"],
-    id: "compiler",
+      "Leveraged pre-trained transformer models to code a chat bot which helps with common job search related tasks.",
+    tags: ["PyTorch", "Python"],
+    id: "chat-bot",
   },
   {
-    title: "Open Recipes - Mobile App (Intro to Software Engineering)",
-    date: "Nov 2023 – Dec 2023",
+    title: "Mini Language Compiler",
+    date: "Mar 2024 - Jun 2024",
     description:
-      "Developed a mobile app for personalized recipes while adhering to Agile programming practices. Implemented a “create new recipe” form which accepted recipe details and stored them in a MongoDB database.",
-    badges: ["React Native", "Express", "MongoDB"],
-    id: "openrecipes",
+      "Created a compiler for programs written in the “Mini” language, a subset of C.",
+    tags: ["Java"],
+  },
+  {
+    title: "GAEIA Team",
+    date: "Feb 2024 - Apr 2024",
+    description:
+      "Developed a web application to host communications and ethical dilemma work for GAEIA.",
+    tags: ["React", "Express", "MongoDB"],
+  },
+  {
+    title: "Open Recipes",
+    date: "Nov 2023 - Dec 2023",
+    description:
+      "Developed a mobile app for meal planning and recipe management aimed towards college students and young adults.",
+    tags: ["React Native", "Express", "MongoDB"],
   },
 ];

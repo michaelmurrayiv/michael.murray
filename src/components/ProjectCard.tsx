@@ -1,36 +1,38 @@
 import React from "react";
-import Badge from "@/components/Tag";
+import Tag from "@/components/Tag";
 import Link from "next/link";
 
 const ProjectCard = ({
   title,
   date,
   description,
-  badges,
+  tags,
   id,
 }: {
   title: string;
   date: string;
   description: string;
-  badges: string[];
-  id: string;
+  tags: string[];
+  id?: string;
 }) => {
   return (
-    <li className="panel">
+    <li className="panel flex flex-col justify-between h-full">
       <h3 className="font-semibold">{title}</h3>
       <span className="text-sm text-gray-500">{date}</span>
-      <p>{description}</p>
-      <div className="flex flex-wrap gap-4">
-        {badges.map((badge, index) => (
-          <Badge key={index} name={badge} />
+      <p className="flex-grow">{description}</p>
+      <div className="flex flex-wrap gap-2 mt-2">
+        {tags.map((tag, index) => (
+          <Tag key={index} name={tag} />
         ))}
       </div>
-      <Link
-        href={`/${id}`}
-        className="text-blue-500 hover:underline mt-2 inline-block"
-      >
-        View More
-      </Link>
+      {id && (
+        <Link
+          href={`/${id}`}
+          className="text-blue-500 hover:underline mt-2 inline-block"
+        >
+          View More
+        </Link>
+      )}
     </li>
   );
 };
