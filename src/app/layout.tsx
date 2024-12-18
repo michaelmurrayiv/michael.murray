@@ -12,13 +12,15 @@ export default function RootLayout({
         <header className="flex justify-between items-center p-6 bg-slate-100 dark:bg-gray-800 shadow-md">
           <Link
             href="/"
-            className="text-2xl font-semibold text-gray-900 dark:text-white"
+            className="text-2xl font-semibold text-gray-900 dark:text-white hover:text-gray-700 dark:hover:text-gray-300"
           >
             michael's website
           </Link>
         </header>
 
-        <main className="max-w-7xl mx-auto p-6 bg-slate-50">{children}</main>
+        <main className="max-w-7xl mx-auto p-6 bg-slate-50 dark:bg-gray-900">
+          {children}
+        </main>
       </body>
     </html>
   );
