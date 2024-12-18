@@ -4,7 +4,7 @@ export const projects = [
     date: "Nov 2024 – Dec 2024",
     description:
       "Leveraged pre-trained transformer models to code a chat bot which helps with common job search related tasks. Created an interface capable of job description analysis, cover letter generation, and sentence auto-completion.",
-    badges: ["PyTorch", "Python", "Hugging Face"],
+    badges: ["PyTorch", "Python"],
   },
   {
     title: "Web Application - GAEIA",

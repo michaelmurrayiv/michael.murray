@@ -5,6 +5,7 @@ import Projects from "@/components/Projects";
 import ContactInfo from "@/components/ContactInfo";
 import Education from "@/components/Education";
 import Certifications from "@/components/Certifications";
+import TerminalChatBot from "@/components/TerminalChatBot";
 
 export default function Home() {
   return (
@@ -15,6 +16,8 @@ export default function Home() {
       <Education/>
       <Certifications/> 
       <ContactInfo />
+
+      <TerminalChatBot />
     </section>
   );
 }
