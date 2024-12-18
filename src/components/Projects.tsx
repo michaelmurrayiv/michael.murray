@@ -1,29 +1,23 @@
 import React from "react";
-import Badge from "@/components/Badge";
+import { projects } from "@/data/Constants";
+import ProjectCard from "@/components/ProjectCard";
 
-const Projects = ({
-  title,
-  date,
-  description,
-  badges,
-}: {
-  title: string;
-  date: string;
-  description: string;
-  badges: string[];
-}) => {
+const Projects = () => {
   return (
-    <li className="panel">
-      <h3 className="font-semibold">{title}</h3>
-      <span className="text-sm text-gray-500">{date}</span>
-      <p>{description}</p>
-      <div className="flex flex-wrap gap-4">
-        {badges.map((badge, index) => (
-          <Badge key={index} name={badge} />
+    <div>
+      <h2 className="text-2xl font-semibold mb-2">Projects</h2>
+      <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {projects.map((project, index) => (
+          <ProjectCard
+            key={index}
+            title={project.title}
+            date={project.date}
+            description={project.description}
+            badges={project.badges}
+          />
         ))}
-      </div>
-    </li>
-  );
-};
+      </ul>
+    </div>
+  )};
 
 export default Projects;
