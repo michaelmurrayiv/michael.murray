@@ -5,15 +5,15 @@ export const projects = [
     description:
       "Developing machine learning models to predict NBA game outcomes.",
     tags: ["PyTorch", "Python"],
-    id: "nba-prediction",
+    id: "nba-game-prediction",
   },
   {
-    title: "Cat vs. Dog vs. Fox",
+    title: "Animal Classification",
     date: "Nov 2024 - Dec 2024",
     description:
       "Implemented a transfer learning model to classify images of cats, dogs, and foxes.",
     tags: ["PyTorch", "Python"],
-    id: "transfer-learning",
+    id: "animal-classification",
   },
   {
     title: "Interactive Chat Bot",
@@ -21,7 +21,7 @@ export const projects = [
     description:
       "Leveraged pre-trained transformer models to code a chat bot which helps with common job search related tasks.",
     tags: ["PyTorch", "Python"],
-    id: "chat-bot",
+    id: "chatbot",
   },
   {
     title: "Mini Language Compiler",

@@ -28,9 +28,9 @@ const ProjectCard = ({
       {id && (
         <Link
           href={`/${id}`}
-          className="text-blue-500 hover:underline mt-2 inline-block"
+          className="text-blue-500 hover:underline mt-2 inline-block text-center border-t pt-2"
         >
-          View More
+          Demo
         </Link>
       )}
     </li>

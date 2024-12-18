@@ -5,7 +5,6 @@ const Profile = () => {
   return (
     <div className="flex">
       <div className="w-1/2">
-        <h6 className="text-2xl">michael murray</h6>
         <br />
         <TypewriterEffect text="Hi, I'm Michael" speed={100} />
         <p>
