@@ -4,9 +4,8 @@ const Certifications = () => {
   return (
     <div>
       <h2 className="text-2xl font-semibold mb-2">Certifications and Badges</h2>
-      <p>Here are all of my cool memoribilia! Woo!</p>
       <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-        <li className="flex flex-col items-center text-center">
+        <li className="flex flex-col items-center text-center panel">
           <img
             src="cisco.svg"
             alt="Cisco Logo"
@@ -24,7 +23,7 @@ const Certifications = () => {
             View Certificate
           </a>
         </li>
-        <li className="flex flex-col items-center text-center">
+        <li className="flex flex-col items-center text-center panel">
           <img
             src="responsible_tech_scholar.png"
             alt="Responsible Tech Scholar"
