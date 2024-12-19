@@ -3,9 +3,9 @@ import React from 'react';
 const Certifications = () => {
   return (
     <div>
-      <h2 className="text-2xl font-semibold mb-2">Certifications and Badges</h2>
-      <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-        <li className="flex flex-col items-center text-center panel">
+      <h2 className="text-4xl font-semibold mb-7">Certifications and Badges</h2>
+      <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-7">
+        <li className="flex flex-col items-center text-center panel text-xl">
           <img
             src="cisco.svg"
             alt="Cisco Logo"
@@ -18,12 +18,12 @@ const Certifications = () => {
             href="cisco.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm text-blue-500 hover:underline"
+            className="text-sm text-blue-500 hover:underline mt-2"
           >
             View Certificate
           </a>
         </li>
-        <li className="flex flex-col items-center text-center panel">
+        <li className="flex flex-col items-center text-center panel text-xl">
           <img
             src="responsible_tech_scholar.png"
             alt="Responsible Tech Scholar"

@@ -41,7 +41,7 @@ export const projects = [
     title: "Open Recipes",
     date: "Nov 2023 - Dec 2023",
     description:
-      "Developed a mobile app for meal planning and recipe management aimed towards college students and young adults.",
+      "Developed a mobile app for meal planning and recipe management marketed towards young adults.",
     tags: ["React Native", "Express", "MongoDB"],
   },
 ];

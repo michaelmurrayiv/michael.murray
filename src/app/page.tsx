@@ -8,11 +8,11 @@ import Certifications from "@/components/Certifications";
 
 export default function Home() {
   return (
-    <section className="space-y-6">
+    <section className="space-y-8">
       <ProfileSection />
-      <SocialLinks />
+      {/* <SocialLinks /> */}
       <Projects />
-      <Education/>
+      {/* <Education/> */}
       <Certifications/> 
       <ContactInfo />
     </section>

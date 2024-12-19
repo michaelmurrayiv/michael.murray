@@ -46,7 +46,7 @@ const TypewriterEffect: React.FC<TypewriterEffectProps> = ({
 
   return (
     <h1
-      className={`text-5xl font-bold cursor-default transition-colors duration-300 ${colors[currentColorIndex]}`}
+      className={`text-4xl font-bold cursor-default transition-colors duration-300 ${colors[currentColorIndex]}`}
       onMouseEnter={handleHover}
     >
       {displayedText}

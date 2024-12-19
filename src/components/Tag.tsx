@@ -23,7 +23,7 @@ const Tag: React.FC<TagProps> = ({ name }) => {
 
   return (
     <span
-      className={`inline-block px-4 py-2 rounded-md text-sm font-medium text-white ${bgColor}`}
+      className={`inline-block px-3 py-1 rounded-md text-sm font-medium text-white ${bgColor}`}
     >
       {name}
     </span>

@@ -3,7 +3,7 @@ import React from "react";
 const ContactInfo = () => {
   return (
     <div>
-      <h2 className="text-2xl font-semibold mb-2">Want to reach out?</h2>
+      <h2 className="text-4xl font-semibold mb-2">Want to reach out?</h2>
       <div className="flex items-center space-x-3">
         <img
           src="/email.svg"

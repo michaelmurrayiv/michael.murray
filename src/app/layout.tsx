@@ -1,5 +1,6 @@
 import Link from "next/link";
 import "./globals.css";
+import SocialLinks from "@/components/SocialLinks";
 
 export default function RootLayout({
   children,
@@ -12,10 +13,11 @@ export default function RootLayout({
         <header className="flex justify-between items-center p-6 bg-slate-100 dark:bg-gray-800 shadow-md">
           <Link
             href="/"
-            className="text-2xl font-semibold text-gray-900 dark:text-white hover:text-gray-700 dark:hover:text-gray-300"
+            className="text-2xl font-semibold text-gray-900 dark:text-white hover:text-blue-500 dark:hover:text-gray-300 cursor-pointer"
           >
             michael's website
           </Link>
+          <SocialLinks />
         </header>
 
         <main className="max-w-7xl mx-auto p-6 bg-slate-50 dark:bg-gray-900">
