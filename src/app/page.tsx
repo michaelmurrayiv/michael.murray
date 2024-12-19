@@ -8,9 +8,7 @@ export default function Home() {
   return (
     <section className="space-y-8">
       <ProfileSection />
-      {/* <SocialLinks /> */}
       <Projects />
-      {/* <Education/> */}
       <Certifications/> 
       <ContactInfo />
     </section>

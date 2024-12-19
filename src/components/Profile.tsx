@@ -15,7 +15,7 @@ const Profile = () => {
           projects.
         </p>
       </div>
-      <div className="flex items-center justify-center w-1/2">
+      <div className="flex items-center justify-center w-1/2 mt-4">
         <img
           src="/portrait.png"
           alt="Michael Murray"

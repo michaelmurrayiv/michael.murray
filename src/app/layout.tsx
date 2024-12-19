@@ -13,7 +13,7 @@ export default function RootLayout({
         <header className="flex justify-between items-center p-6 bg-slate-100 dark:bg-gray-800 shadow-md">
           <Link
             href="/"
-            className="text-2xl font-semibold text-gray-900 dark:text-white hover:text-blue-500 dark:hover:text-gray-300 cursor-pointer"
+            className="text-3xl font-semibold text-gray-900 dark:text-white hover:text-blue-500 dark:hover:text-gray-300 cursor-pointer"
           >
             michael&apos;s website
           </Link>
