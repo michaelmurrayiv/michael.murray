@@ -9,7 +9,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+      <body className="bg-slate-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
         <header className="flex justify-between items-center p-6 bg-slate-100 dark:bg-gray-800 shadow-md">
           <Link
             href="/"
@@ -20,7 +20,7 @@ export default function RootLayout({
           <SocialLinks />
         </header>
 
-        <main className="max-w-7xl mx-auto p-6 bg-slate-50 dark:bg-gray-900">
+        <main className="max-w-7xl mx-auto p-6 dark:bg-gray-900">
           {children}
         </main>
       </body>
