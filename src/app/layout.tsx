@@ -15,7 +15,7 @@ export default function RootLayout({
             href="/"
             className="text-2xl font-semibold text-gray-900 dark:text-white hover:text-blue-500 dark:hover:text-gray-300 cursor-pointer"
           >
-            michael's website
+            michael&apos;s website
           </Link>
           <SocialLinks />
         </header>

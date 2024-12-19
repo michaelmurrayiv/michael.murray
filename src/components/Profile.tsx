@@ -8,10 +8,11 @@ const Profile = () => {
         <br />
         <TypewriterEffect text="Hi, I'm Michael" speed={100} />
         <p className="text-lg mt-2">
-          I am a software engineer from Seattle.
-          I'm passionate about all things computer science, from software
-          engineering to deep learning to cybersecurity.
-          I enjoy learning new technologies and working on fun projects.
+          I am a software engineer from Seattle. 
+          I&apos;m passionate about all
+          things computer science, from software engineering to deep learning to
+          cybersecurity. I enjoy learning new technologies and working on fun
+          projects.
         </p>
       </div>
       <div className="flex items-center justify-center w-1/2">
