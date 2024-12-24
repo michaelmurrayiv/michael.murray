@@ -2,7 +2,11 @@ export default function AnimalClassificationPage() {
   return (
     <div>
       <h1>Animal Classification</h1>
-      <p>Coming soon...</p>
+      <iframe
+        src="Transfer_Learning.html"
+        title="Jupyter Notebook"
+        className="w-full h-screen"
+      />
     </div>
   );
 }

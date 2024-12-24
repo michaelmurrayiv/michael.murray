@@ -1,11 +1,11 @@
 export const projects = [
   {
-    title: "NBA Game Prediction (Senior Project)",
+    title: "NBA Game Prediction",
     date: "Sep 2024 - Present",
     description:
       "Developing machine learning models to predict NBA game outcomes.",
     tags: ["PyTorch", "Python"],
-    id: "nba-game-prediction",
+    // id: "nba-game-prediction",
   },
   {
     title: "Animal Classification",
@@ -13,7 +13,7 @@ export const projects = [
     description:
       "Implemented a transfer learning model to classify images of cats, dogs, and foxes.",
     tags: ["PyTorch", "Python"],
-    id: "animal-classification",
+    // id: "animal-classification",
   },
   {
     title: "Interactive Chat Bot",
