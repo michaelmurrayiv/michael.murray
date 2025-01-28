@@ -9,18 +9,18 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="bg-slate-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
-        <header className="flex justify-between items-center p-6 bg-slate-100 dark:bg-gray-800 shadow-md">
+      <body className="bg-slate-50 text-gray-900 0">
+        <header className="flex justify-between items-center p-6 bg-slate-100">
           <Link
             href="/"
-            className="text-3xl font-semibold text-gray-900 dark:text-white hover:text-blue-500 dark:hover:text-gray-300 cursor-pointer"
+            className="text-3xl font-semibold text-gray-900  hover:text-blue-500 cursor-pointer"
           >
             michael&apos;s website
           </Link>
           <SocialLinks />
         </header>
 
-        <main className="max-w-7xl mx-auto p-6 dark:bg-gray-900">
+        <main className="max-w-7xl mx-auto p-6 ">
           {children}
         </main>
       </body>
