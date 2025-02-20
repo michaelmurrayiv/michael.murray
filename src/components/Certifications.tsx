@@ -7,6 +7,24 @@ const Certifications = () => {
       <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-7">
         <li className="flex flex-col items-center text-center panel text-xl">
           <img
+            src="linkedin_learn.svg"
+            alt="LinkedIn Logo"
+            className="w-20 h-20 mb-2 object-contain"
+          />
+          <p className="font-semibold">
+            Navigating the Cybersecurity Threat Landscape - LinkedIn Learning
+          </p>
+          <a
+            href="LILearn.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm text-blue-500 hover:underline mt-2"
+          >
+            View Certificate
+          </a>
+        </li>
+        <li className="flex flex-col items-center text-center panel text-xl">
+          <img
             src="cisco.svg"
             alt="Cisco Logo"
             className="w-20 h-20 mb-2 object-contain"
