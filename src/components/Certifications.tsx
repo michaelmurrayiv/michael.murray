@@ -25,6 +25,24 @@ const Certifications = () => {
         </li>
         <li className="flex flex-col items-center text-center panel text-xl">
           <img
+            src="linkedin_learn.svg"
+            alt="LinkedIn Logo"
+            className="w-20 h-20 mb-2 object-contain"
+          />
+          <p className="font-semibold">
+            Become a Penetration Tester - LinkedIn Learning
+          </p>
+          <a
+            href="LILearn2.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm text-blue-500 hover:underline mt-2"
+          >
+            View Certificate
+          </a>
+        </li>
+        <li className="flex flex-col items-center text-center panel text-xl">
+          <img
             src="cisco.svg"
             alt="Cisco Logo"
             className="w-20 h-20 mb-2 object-contain"
