@@ -4,28 +4,33 @@ import TypewriterEffect from "@/components/TypewriterEffect";
 const Profile = () => {
   return (
     <div className="flex flex-col md:flex-row">
+      {/* Left side - Text */}
       <div className="w-full md:w-1/2">
-        <br />
-        <TypewriterEffect text="Hi, I'm Michael" speed={100} />
-        <p className="text-lg mt-2">I am a software engineer from Seattle.</p>
+        <TypewriterEffect text="Hi, I'm Michael!" speed={100} />
         <p className="text-lg mt-2">
-          I&apos;m passionate about all things computer science, and am
-          particularly interested in software engineering, deep learning, and
-          cybersecurity. I enjoy working on projects where I can learn new
-          technologies and solve interesting problems. In my free time, I love
-          to play basketball, mountain bike, and read.
+          I am a recent Computer Science graduate from Cal Poly with interests
+          in software engineering, machine learning, and cybersecurity. I thrive
+          on tackling complex challenges and continuously expanding my technical
+          skills through hands-on projects.
         </p>
         <p className="text-lg mt-2">
-          If you&apos;d like to get in touch, feel free to reach out on{" "}
+          Outside of work, I enjoy staying active through basketball and
+          mountain biking, and I’m always looking for opportunities to
+          learn—whether through reading or exploring new technologies.
+        </p>
+        <p className="text-lg mt-2">
+          Feel free to connect with me on{" "}
           <a
             href="https://www.linkedin.com/in/mmurray-iv/"
             className="text-blue-500 hover:underline"
           >
             LinkedIn
           </a>{" "}
-          or via email at michael.murray.iv@gmail.com.
+          or reach out via email at{" "}
+          <span className="underline">michael.murray.iv@gmail.com</span>.
         </p>
       </div>
+
       <div className="flex items-center justify-center w-full md:w-1/2 mt-4 md:mt-0">
         <img
           src="/portrait.png"

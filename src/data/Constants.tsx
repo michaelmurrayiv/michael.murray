@@ -1,19 +1,19 @@
 export const projects = [
   {
     title: "NBA Game Prediction",
-    date: "Sep 2024 - Present",
+    date: "Sep 2024 - Mar 2025",
     description:
-      "Developing machine learning models to predict NBA game outcomes.",
+      "Developed machine learning models to predict NBA game outcomes with 63% accuracy.",
     tags: ["PyTorch", "Python"],
-    // id: "nba-game-prediction",
+    id: "nba-game-prediction",
   },
   {
-    title: "Animal Classification",
-    date: "Nov 2024 - Dec 2024",
+    title: "ML in Malware",
+    date: "Feb 2025 - Mar 2025",
     description:
-      "Implemented a transfer learning model to classify images of cats, dogs, and foxes.",
-    tags: ["PyTorch", "Python"],
-    // id: "animal-classification",
+      "Compared applications of machine learning in malware generation and detection.",
+    tags: [],
+    id: "ml-malware",
   },
   {
     title: "Interactive Chat Bot",
@@ -35,13 +35,13 @@ export const projects = [
     date: "Feb 2024 - Apr 2024",
     description:
       "Developed a web application to host communications and ethical dilemma work for GAEIA.",
-    tags: ["React", "Express", "MongoDB"],
+    tags: ["React", "Express", "NodeJS"],
   },
   {
     title: "Open Recipes",
     date: "Nov 2023 - Dec 2023",
     description:
       "Developed a mobile app for meal planning and recipe management marketed towards young adults.",
-    tags: ["React Native", "Express", "MongoDB"],
+    tags: ["React Native", "Express", "NodeJS"],
   },
 ];

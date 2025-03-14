@@ -4,7 +4,6 @@ import YouTubeEmbed from "@/components/YouTubeEmbed";
 const ChatbotPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-50 p-6 flex flex-col items-center">
-      {/* Page Header */}
       <header className="text-center mb-12">
         <h1 className="text-4xl font-bold text-gray-900 mb-4">Chatbot Demo</h1>
         <p className="text-lg text-gray-600 max-w-2xl">

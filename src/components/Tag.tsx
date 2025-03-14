@@ -6,7 +6,7 @@ const colorMap: Record<string, string> = {
   Python: "bg-red-500",
   React: "bg-purple-500",
   Express: "bg-blue-600",
-  MongoDB: "bg-green-500",
+  NodeJS: "bg-green-500",
   TypeScript: "bg-blue-600",
   "React Native": "bg-purple-500",
   PyTorch: "bg-yellow-500",

@@ -1,11 +1,11 @@
 import React from 'react';
-
+//TODO: create a cert. panel component
 const Certifications = () => {
   return (
     <div>
       <h2 className="text-4xl font-semibold mb-7">Certifications and Badges</h2>
       <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-7">
-        <li className="flex flex-col items-center text-center panel text-xl">
+        <li className="flex flex-col items-center text-center panel text-xl bg-white">
           <img
             src="linkedin_learn.svg"
             alt="LinkedIn Logo"
@@ -23,7 +23,7 @@ const Certifications = () => {
             View Certificate
           </a>
         </li>
-        <li className="flex flex-col items-center text-center panel text-xl">
+        {/* <li className="flex flex-col items-center text-center panel text-xl bg-white">
           <img
             src="linkedin_learn.svg"
             alt="LinkedIn Logo"
@@ -40,8 +40,8 @@ const Certifications = () => {
           >
             View Certificate
           </a>
-        </li>
-        <li className="flex flex-col items-center text-center panel text-xl">
+        </li> */}
+        <li className="flex flex-col items-center text-center panel text-xl bg-white">
           <img
             src="cisco.svg"
             alt="Cisco Logo"
@@ -59,7 +59,7 @@ const Certifications = () => {
             View Certificate
           </a>
         </li>
-        <li className="flex flex-col items-center text-center panel text-xl">
+        <li className="flex flex-col items-center text-center panel text-xl bg-white">
           <img
             src="responsible_tech_scholar.png"
             alt="Responsible Tech Scholar"
