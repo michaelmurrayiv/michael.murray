@@ -1,7 +1,9 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { useEffect, useState } from "react";
-import L from "leaflet";
+// import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import statesData from "../../data/us-states.json";
 
@@ -25,6 +27,8 @@ export default function USMapPage() {
 
   // --- Countdown Timer ---
   useEffect(() => {
+    if (typeof window === "undefined") return; // <-- important
+
     const targetDate = new Date("2025-09-29T00:00:00").getTime();
     const interval = setInterval(() => {
       const now = new Date().getTime();
@@ -59,31 +63,32 @@ export default function USMapPage() {
     setEmail("");
   };
 
-const handleSubmitSelection = async () => {
-  if (!currentUser) return;
+  const handleSubmitSelection = async () => {
+    if (!currentUser) return;
 
-  const formURL =
-    "https://docs.google.com/forms/d/e/1FAIpQLSfvYeo3nPM1kO2o_BDhspgN3Tq_mQB16gqzAZk4GVlTo5UZGQ/formResponse";
+    const formURL =
+      "https://docs.google.com/forms/d/e/1FAIpQLSfvYeo3nPM1kO2o_BDhspgN3Tq_mQB16gqzAZk4GVlTo5UZGQ/formResponse";
 
-  const formData = new URLSearchParams();
-  formData.append("entry.1187015083", currentUser.name);
-  formData.append("entry.224833438", currentUser.email);
-  formData.append("entry.1028114489", currentUser.selectedStates.join(", "));
+    const formData = new URLSearchParams();
+    formData.append("entry.1187015083", currentUser.name);
+    formData.append("entry.224833438", currentUser.email);
+    formData.append("entry.1028114489", currentUser.selectedStates.join(", "));
 
-  try {
-    await fetch(formURL, {
-      method: "POST",
-      mode: "no-cors",
-      body: formData,
-    });
-    alert("Selections submitted successfully!");
-  } catch (err) {
-    console.error(err);
-    alert("Error submitting selections.");
-  }
-};
+    try {
+      await fetch(formURL, {
+        method: "POST",
+        mode: "no-cors",
+        body: formData,
+      });
+      alert("Selections submitted successfully!");
+    } catch (err) {
+      console.error(err);
+      alert("Error submitting selections.");
+    }
+  };
   // --- Leaflet Map ---
   useEffect(() => {
+    const L = require("leaflet");
     const container = L.DomUtil.get("map");
     if (container != null) (container as any)._leaflet_id = null;
 
@@ -108,31 +113,32 @@ const handleSubmitSelection = async () => {
       fillOpacity: 0.7,
     });
 
-const info = new L.Control();
+    const info = new L.Control();
 
-(info as any).onAdd = function () {
-  this._div = L.DomUtil.create("div", "info");
-  this.update();
-  return this._div;
-};
+    (info as any).onAdd = function () {
+      this._div = L.DomUtil.create("div", "info");
+      this.update();
+      return this._div;
+    };
 
-(info as any).update = function (props?: any) {
-  if (!currentUser) {
-    this._div.innerHTML = `<h4>US States</h4>Hover over a state`;
-    return;
-  }
+    (info as any).update = function (props?: any) {
+      if (!currentUser) {
+        this._div.innerHTML = `<h4>US States</h4>Hover over a state`;
+        return;
+      }
 
-  if (!props) {
-    this._div.innerHTML = `<h4>US States</h4>Hover over a state`;
-  } else {
-    const stateName = props.name;
-    const index = currentUser.selectedStates.indexOf(stateName);
-    const orderText = index >= 0 ? `(Order: ${index + 1})` : "(Not selected)";
-    this._div.innerHTML = `<h4>US States</h4><b>${stateName}</b> ${orderText}`;
-  }
-};
+      if (!props) {
+        this._div.innerHTML = `<h4>US States</h4>Hover over a state`;
+      } else {
+        const stateName = props.name;
+        const index = currentUser.selectedStates.indexOf(stateName);
+        const orderText =
+          index >= 0 ? `(Order: ${index + 1})` : "(Not selected)";
+        this._div.innerHTML = `<h4>US States</h4><b>${stateName}</b> ${orderText}`;
+      }
+    };
 
-info.addTo(map);
+    info.addTo(map);
 
     const highlightFeature = (e: any) => {
       const layer = e.target;
