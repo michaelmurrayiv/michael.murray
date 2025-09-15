@@ -13,139 +13,199 @@ type User = {
 };
 
 export default function USMapPage() {
-    const [users, setUsers] = useState<User[]>([]);
-    const [currentUser, setCurrentUser] = useState<User | null>(null);
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
+  const [users, setUsers] = useState<User[]>([]);
+  const [currentUser, setCurrentUser] = useState<User | null>(null);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [countdown, setCountdown] = useState("");
 
-    const colors = ["#ff0000", "#0000ff", "#00ff00", "#ffa500"];
-    const getRandomColor = () =>
-      colors[Math.floor(Math.random() * colors.length)];
+  const colors = ["#ff0000", "#0000ff", "#00ff00", "#ffa500"];
+  const getRandomColor = () =>
+    colors[Math.floor(Math.random() * colors.length)];
 
-    const handleCreateAccount = (e: React.FormEvent) => {
-      e.preventDefault();
-      const newUser: User = {
-        name,
-        email,
-        color: getRandomColor(),
-        selectedStates: [],
-      };
-      setUsers([...users, newUser]);
-      setCurrentUser(newUser);
-      setName("");
-      setEmail("");
+  // --- Countdown Timer ---
+  useEffect(() => {
+    const targetDate = new Date("2025-09-29T00:00:00").getTime();
+    const interval = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      if (distance <= 0) {
+        setCountdown("Time's up!");
+        clearInterval(interval);
+      } else {
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((distance / (1000 * 60)) % 60);
+        const seconds = Math.floor((distance / 1000) % 60);
+        setCountdown(`${days}d ${hours}h ${minutes}m ${seconds}s`);
+      }
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const handleCreateAccount = (e: React.FormEvent) => {
+    e.preventDefault();
+    const newUser: User = {
+      name,
+      email,
+      color: getRandomColor(),
+      selectedStates: [],
     };
-    
-useEffect(() => {
-  const container = L.DomUtil.get("map");
-  if (container != null) (container as any)._leaflet_id = null;
-
-  const map = L.map("map").setView([37.8, -96], 4);
-
-  L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    maxZoom: 19,
-    attribution:
-      '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-  }).addTo(map);
-
-  // --- Style function ---
-  const style = (feature: any) => ({
-    fillColor: "gray", // default gray
-    weight: 2,
-    opacity: 1,
-    color: "white",
-    dashArray: "3",
-    fillOpacity: 0.7,
-  });
-
-  // --- Info control ---
-  const info = L.control();
-
-  info.onAdd = function () {
-    this._div = L.DomUtil.create("div", "info");
-    this.update();
-    return this._div;
+    setUsers([...users, newUser]);
+    setCurrentUser(newUser);
+    setName("");
+    setEmail("");
   };
 
-  info.update = function (props?: any) {
-    this._div.innerHTML = `<h4>US States</h4>${
-      props ? `<b>${props.name}</b>` : "Hover over a state"
-    }`;
-  };
+const handleSubmitSelection = async () => {
+  if (!currentUser) return;
 
-  info.addTo(map);
+  const formURL =
+    "https://docs.google.com/forms/d/e/1FAIpQLSfvYeo3nPM1kO2o_BDhspgN3Tq_mQB16gqzAZk4GVlTo5UZGQ/formResponse";
 
-  const highlightFeature = (e: any) => {
-    const layer = e.target;
-    layer.setStyle({
-      weight: 5,
-      color: "#666",
-      dashArray: "",
-      fillOpacity: 0.7,
+  const formData = new URLSearchParams();
+  formData.append("entry.1187015083", currentUser.name);
+  formData.append("entry.224833438", currentUser.email);
+  formData.append("entry.1028114489", currentUser.selectedStates.join(", "));
+
+  try {
+    await fetch(formURL, {
+      method: "POST",
+      mode: "no-cors",
+      body: formData,
     });
-    layer.bringToFront();
-    info.update(layer.feature.properties);
-  };
+    alert("Selections submitted successfully!");
+  } catch (err) {
+    console.error(err);
+    alert("Error submitting selections.");
+  }
+};
+  // --- Leaflet Map ---
+  useEffect(() => {
+    const container = L.DomUtil.get("map");
+    if (container != null) (container as any)._leaflet_id = null;
 
-  const resetHighlight = (e: any) => {
-    const layer = e.target;
-    const stateName = layer.feature.properties.name;
+    const map = L.map("map").setView([37.8, -96], 4);
 
-    // Restore user color if selected, else gray
-    const fillColor = currentUser?.selectedStates?.includes(stateName)
-      ? currentUser.color
-      : "gray";
+    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 19,
+      attribution:
+        '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    }).addTo(map);
 
-    layer.setStyle({
+    const style = (feature: any) => ({
+      fillColor:
+        currentUser?.selectedStates.includes(feature.properties.name) &&
+        currentUser
+          ? currentUser.color
+          : "gray",
       weight: 2,
+      opacity: 1,
       color: "white",
       dashArray: "3",
       fillOpacity: 0.7,
-      fillColor,
     });
 
-    info.update();
-  };
+    const info = L.control();
 
-  const onEachFeature = (feature: any, layer: any) => {
-    layer.on({
-      mouseover: highlightFeature,
-      mouseout: resetHighlight,
-      click: () => {
-        if (!currentUser) return; // only logged-in users
-        const stateName = feature.properties.name;
+    info.onAdd = function () {
+      this._div = L.DomUtil.create("div", "info");
+      this.update();
+      return this._div;
+    };
 
-        if (!currentUser.selectedStates) currentUser.selectedStates = [];
+    info.update = function (props?: any) {
+      if (!currentUser) {
+        this._div.innerHTML = `<h4>US States</h4>Hover over a state`;
+        return;
+      }
 
-        if (!currentUser.selectedStates.includes(stateName)) {
-          currentUser.selectedStates.push(stateName);
+      if (!props) {
+        this._div.innerHTML = `<h4>US States</h4>Hover over a state`;
+      } else {
+        const stateName = props.name;
+        const index = currentUser.selectedStates.indexOf(stateName);
+        const orderText =
+          index >= 0 ? `(Order: ${index + 1})` : "(Not selected)";
+        this._div.innerHTML = `<h4>US States</h4><b>${stateName}</b> ${orderText}`;
+      }
+    };
 
-          // immediately color the clicked state
-          layer.setStyle({ fillColor: currentUser.color });
-        }
+    info.addTo(map);
 
-        // update state for tracking
-        setCurrentUser({ ...currentUser });
-      },
-    });
+    const highlightFeature = (e: any) => {
+      const layer = e.target;
+      layer.setStyle({
+        weight: 5,
+        color: "#666",
+        dashArray: "",
+        fillOpacity: 0.7,
+      });
+      layer.bringToFront();
+      info.update(layer.feature.properties);
+    };
 
-    // Apply user color if previously selected
-    if (currentUser?.selectedStates?.includes(feature.properties.name)) {
-      layer.setStyle({ fillColor: currentUser.color });
-    }
-  };
+    const resetHighlight = (e: any) => {
+      const layer = e.target;
+      const stateName = layer.feature.properties.name;
+      const fillColor = currentUser?.selectedStates.includes(stateName)
+        ? currentUser.color
+        : "gray";
 
-  const geojson = L.geoJson(statesData as any, {
-    style,
-    onEachFeature,
-  }).addTo(map);
+      layer.setStyle({
+        weight: 2,
+        color: "white",
+        dashArray: "3",
+        fillOpacity: 0.7,
+        fillColor,
+      });
+      info.update();
+    };
 
-  return () => map.remove();
-}, [currentUser]);
+    const onEachFeature = (feature: any, layer: any) => {
+      layer.on({
+        mouseover: highlightFeature,
+        mouseout: resetHighlight,
+        click: () => {
+          if (!currentUser) return;
+          const stateName = feature.properties.name;
+
+          if (!currentUser.selectedStates) currentUser.selectedStates = [];
+
+          const index = currentUser.selectedStates.indexOf(stateName);
+
+          if (index >= 0) {
+            // Toggle off
+            currentUser.selectedStates.splice(index, 1);
+            layer.setStyle({ fillColor: "gray" });
+          } else {
+            if (currentUser.selectedStates.length >= 5) return;
+            currentUser.selectedStates.push(stateName);
+            layer.setStyle({ fillColor: currentUser.color });
+          }
+
+          setCurrentUser({ ...currentUser });
+        },
+      });
+
+      // Initial fill color
+      if (currentUser?.selectedStates.includes(feature.properties.name)) {
+        layer.setStyle({ fillColor: currentUser.color });
+      }
+    };
+
+    L.geoJson(statesData as any, { style, onEachFeature }).addTo(map);
+
+    return () => map.remove();
+  }, [currentUser]);
 
   return (
     <div>
       <h1>US Map</h1>
+
+      <h2>Countdown to Monday, September 29th, 2025: {countdown}</h2>
 
       {!currentUser && (
         <form onSubmit={handleCreateAccount} style={{ marginBottom: "20px" }}>
@@ -174,7 +234,11 @@ useEffect(() => {
       )}
 
       <div id="map" style={{ height: "600px", width: "100%" }} />
-
+      {currentUser && (
+        <button onClick={handleSubmitSelection} style={{ marginTop: "10px" }}>
+          Submit Selections
+        </button>
+      )}
     </div>
   );
 }
