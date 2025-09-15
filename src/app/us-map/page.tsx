@@ -108,32 +108,31 @@ const handleSubmitSelection = async () => {
       fillOpacity: 0.7,
     });
 
-    const info = L.control();
+const info = new L.Control();
 
-    info.onAdd = function () {
-      this._div = L.DomUtil.create("div", "info");
-      this.update();
-      return this._div;
-    };
+(info as any).onAdd = function () {
+  this._div = L.DomUtil.create("div", "info");
+  this.update();
+  return this._div;
+};
 
-    info.update = function (props?: any) {
-      if (!currentUser) {
-        this._div.innerHTML = `<h4>US States</h4>Hover over a state`;
-        return;
-      }
+(info as any).update = function (props?: any) {
+  if (!currentUser) {
+    this._div.innerHTML = `<h4>US States</h4>Hover over a state`;
+    return;
+  }
 
-      if (!props) {
-        this._div.innerHTML = `<h4>US States</h4>Hover over a state`;
-      } else {
-        const stateName = props.name;
-        const index = currentUser.selectedStates.indexOf(stateName);
-        const orderText =
-          index >= 0 ? `(Order: ${index + 1})` : "(Not selected)";
-        this._div.innerHTML = `<h4>US States</h4><b>${stateName}</b> ${orderText}`;
-      }
-    };
+  if (!props) {
+    this._div.innerHTML = `<h4>US States</h4>Hover over a state`;
+  } else {
+    const stateName = props.name;
+    const index = currentUser.selectedStates.indexOf(stateName);
+    const orderText = index >= 0 ? `(Order: ${index + 1})` : "(Not selected)";
+    this._div.innerHTML = `<h4>US States</h4><b>${stateName}</b> ${orderText}`;
+  }
+};
 
-    info.addTo(map);
+info.addTo(map);
 
     const highlightFeature = (e: any) => {
       const layer = e.target;
@@ -144,7 +143,7 @@ const handleSubmitSelection = async () => {
         fillOpacity: 0.7,
       });
       layer.bringToFront();
-      info.update(layer.feature.properties);
+      (info as any).update(layer.feature.properties);
     };
 
     const resetHighlight = (e: any) => {
@@ -161,7 +160,7 @@ const handleSubmitSelection = async () => {
         fillOpacity: 0.7,
         fillColor,
       });
-      info.update();
+      (info as any).update();
     };
 
     const onEachFeature = (feature: any, layer: any) => {
@@ -198,7 +197,9 @@ const handleSubmitSelection = async () => {
 
     L.geoJson(statesData as any, { style, onEachFeature }).addTo(map);
 
-    return () => map.remove();
+    return () => {
+      map.remove();
+    };
   }, [currentUser]);
 
   return (
