@@ -3,7 +3,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-// import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import statesData from "../../data/us-states.json";
 
@@ -27,7 +26,7 @@ export default function USMapPage() {
 
   // --- Countdown Timer ---
   useEffect(() => {
-    if (typeof window === "undefined") return; // <-- important
+    if (typeof window === "undefined") return;
 
     const targetDate = new Date("2025-09-29T00:00:00").getTime();
     const interval = setInterval(() => {
@@ -86,6 +85,7 @@ export default function USMapPage() {
       alert("Error submitting selections.");
     }
   };
+
   // --- Leaflet Map ---
   useEffect(() => {
     const L = require("leaflet");
@@ -182,7 +182,6 @@ export default function USMapPage() {
           const index = currentUser.selectedStates.indexOf(stateName);
 
           if (index >= 0) {
-            // Toggle off
             currentUser.selectedStates.splice(index, 1);
             layer.setStyle({ fillColor: "gray" });
           } else {
@@ -195,7 +194,6 @@ export default function USMapPage() {
         },
       });
 
-      // Initial fill color
       if (currentUser?.selectedStates.includes(feature.properties.name)) {
         layer.setStyle({ fillColor: currentUser.color });
       }
@@ -209,19 +207,56 @@ export default function USMapPage() {
   }, [currentUser]);
 
   return (
-    <div>
-      <h1>US Map</h1>
+    <div style={{ fontFamily: "Arial, sans-serif", padding: "20px" }}>
+      <h1
+        style={{
+          textAlign: "center",
+          fontSize: "2.5rem",
+          marginBottom: "20px",
+        }}
+      >
+        My job location to be revealed in:
+      </h1>
 
-      <h2>Countdown to Monday, September 29th, 2025: {countdown}</h2>
+      <h2
+        style={{
+          textAlign: "center",
+          fontSize: "2rem",
+          marginBottom: "30px",
+          color: "#333",
+        }}
+      >
+        <div
+          style={{ fontSize: "3rem", marginTop: "10px", fontWeight: "bold" }}
+        >
+          {countdown}
+        </div>
+      </h2>
 
       {!currentUser && (
-        <form onSubmit={handleCreateAccount} style={{ marginBottom: "20px" }}>
+        <form
+          onSubmit={handleCreateAccount}
+          style={{
+            marginBottom: "20px",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: "10px",
+          }}
+        >
           <input
             type="text"
             placeholder="Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
+            style={{
+              padding: "10px",
+              fontSize: "1.2rem",
+              width: "250px",
+              borderRadius: "8px",
+              border: "1px solid #ccc",
+            }}
           />
           <input
             type="email"
@@ -229,22 +264,70 @@ export default function USMapPage() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
+            style={{
+              padding: "10px",
+              fontSize: "1.2rem",
+              width: "250px",
+              borderRadius: "8px",
+              border: "1px solid #ccc",
+            }}
           />
-          <button type="submit">Create Account</button>
+          <button
+            type="submit"
+            style={{
+              backgroundColor: "#007bff",
+              color: "white",
+              padding: "12px 24px",
+              border: "none",
+              borderRadius: "8px",
+              cursor: "pointer",
+              fontSize: "1.2rem",
+            }}
+          >
+            Create Account
+          </button>
         </form>
       )}
 
       {currentUser && (
-        <p>
-          Logged in as <b>{currentUser.name}</b> (<i>{currentUser.email}</i>)
-        </p>
+        <div style={{ textAlign: "center", marginBottom: "20px" }}>
+          <p style={{ fontSize: "1.2rem" }}>
+            Logged in as <b>{currentUser.name}</b> (<i>{currentUser.email}</i>)
+          </p>
+          <p style={{ fontSize: "1.2rem", marginTop: "10px" }}>
+            You can select the top 5 states you think I&apos;ll be moved to. There will be prizes...
+          </p>
+          <p style={{ fontSize: "1.2rem", marginTop: "10px" }}>
+            Selected States:{" "}
+            {currentUser.selectedStates.length > 0
+              ? currentUser.selectedStates.join(", ")
+              : "None"}
+          </p>
+        </div>
       )}
 
-      <div id="map" style={{ height: "600px", width: "100%" }} />
+      <div
+        id="map"
+        style={{ height: "600px", width: "100%", marginBottom: "20px" }}
+      />
+
       {currentUser && (
-        <button onClick={handleSubmitSelection} style={{ marginTop: "10px" }}>
-          Submit Selections
-        </button>
+        <div style={{ textAlign: "center" }}>
+          <button
+            onClick={handleSubmitSelection}
+            style={{
+              backgroundColor: "#28a745",
+              color: "white",
+              padding: "12px 24px",
+              border: "none",
+              borderRadius: "8px",
+              cursor: "pointer",
+              fontSize: "1.2rem",
+            }}
+          >
+            Submit Selections
+          </button>
+        </div>
       )}
     </div>
   );
