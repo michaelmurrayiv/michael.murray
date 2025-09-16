@@ -19,6 +19,7 @@ export default function USMapPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [countdown, setCountdown] = useState("");
+  const [submitted, setSubmitted] = useState(false);
 
   const colors = ["#ff0000", "#0000ff", "#00ff00", "#ffa500"];
   const getRandomColor = () =>
@@ -64,6 +65,8 @@ export default function USMapPage() {
 
   const handleSubmitSelection = async () => {
     if (!currentUser) return;
+    setSubmitted(true);
+    
 
     const formURL =
       "https://docs.google.com/forms/d/e/1FAIpQLSfvYeo3nPM1kO2o_BDhspgN3Tq_mQB16gqzAZk4GVlTo5UZGQ/formResponse";
@@ -311,7 +314,7 @@ export default function USMapPage() {
         style={{ height: "600px", width: "100%", marginBottom: "20px" }}
       />
 
-      {currentUser && (
+      {currentUser && !submitted && (
         <div style={{ textAlign: "center" }}>
           <button
             onClick={handleSubmitSelection}
